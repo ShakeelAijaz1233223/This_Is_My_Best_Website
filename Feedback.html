@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feedback - The College</title>
+  <link href="icon.jpg" rel="icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    /* Navbar */
+    .navbar {
+      background: #1f2937;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo img { height: 40px; }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin-top: 10px;
+    }
+    .nav-links a { color: #fff; text-decoration: none; }
+    .nav-links a.active,
+    .nav-links a:hover { color: #4ade80; }
+    .nav-links li { position: relative; }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #1f2937;
+      min-width: 160px;
+      z-index: 1000;
+    }
+    .nav-links li:hover .dropdown-content { display: block; }
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .dropdown-content a:hover { background: #374151; }
+    .menu-toggle { display: none; font-size: 1.6rem; cursor: pointer; }
+    /* Feedback Section */
+    .feedback-section {
+      max-width: 600px;
+      margin: 4rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .feedback-section h2 { color: #1f2937; margin-bottom: 1rem; }
+    .form-control:focus {
+      border-color: #4ade80;
+      box-shadow: 0 0 0 0.2rem rgba(74, 222, 128, 0.25);
+    }
+    .btn-success {
+      background-color: #4ade80;
+      border-color: #4ade80;
+    }
+    .btn-success:hover {
+      background-color: #22c55e;
+      border-color: #22c55e;
+    }
+    /* Footer */
+    .footer {
+      background: #111827;
+      color: #fff;
+      padding: 3rem 1rem 1rem;
+      margin-top: 4rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 2rem;
+    }
+    .footer-col h3 {
+      margin-bottom: 1rem;
+      border-left: 3px solid #4ade80;
+      padding-left: 0.5rem;
+    }
+    .footer-col ul { list-style: none; padding-left: 0; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul li a { color: #fff; text-decoration: none; }
+    .footer-col ul li a:hover { color: #4ade80; }
+    .social-icons a {
+      margin-right: 0.5rem;
+      font-size: 1.3rem;
+      color: #fff;
+      transition: all 0.3s;
+    }
+    .social-icons a:hover {
+      color: #4ade80;
+      transform: scale(1.1);
+    }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 1rem;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        right: 0;
+        background: #111827;
+        width: 220px;
+        display: none;
+        padding: 1rem;
+        border-radius: 0 0 8px 8px;
+      }
+      .nav-links.show { display: flex; }
+      .dropdown-content { position: static; background: none; padding-left: 1rem; }
+      .nav-links li { margin-bottom: 0.8rem; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><img src="logo.png" alt="College Logo" /></div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#">More ▼</a>
+        <div class="dropdown-content">
+          <a href="About.html">About</a>
+          <a href="Gallery.html">Gallery</a>
+          <a class="active" href="Feedback.html">Feedback</a>
+          <a href="Content.html">Contact</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Events ▼</a>
+        <div class="dropdown-content">
+          <a href="Technical.html">Technical</a>
+          <a href="Cultural.html">Cultural</a>
+          <a href="#sports">Sports</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Feedback Section -->
+  <section class="feedback-section">
+    <h2 class="text-center">We Value Your Feedback</h2>
+    <form id="feedback-form">
+      <div class="mb-3">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Your name..." required />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="name@example.com" required />
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Your Feedback</label>
+        <textarea class="form-control" id="message" rows="5" placeholder="Write your feedback here..." required></textarea>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-success">Submit Feedback</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>About The College</h3>
+        <p>We provide quality education and a vibrant campus life to empower students for a better future.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="About.html">About</a></li>
+          <li><a href="Gallery.html">Gallery</a></li>
+          <li><a href="Feedback.html">Feedback</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>Email: <a href="mailto:info@collegepk.edu">info@collegepk.edu</a></li>
+          <li>Phone: +92-51-1234567</li>
+          <li>Address: Faisal Mosque Road, Islamabad, Pakistan</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 The College. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JS Scripts -->
+  <script>
+    document.getElementById("feedback-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+      const date = new Date().toLocaleString();
+
+      // Save to localStorage
+      localStorage.setItem("feedbackData", JSON.stringify({ name, email, message, date }));
+
+      // Redirect
+      window.location.href = "Feedback_data.html";
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
